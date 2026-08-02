@@ -1,0 +1,21 @@
+product_id,product_name,category,brand,price,stock_quantity
+101,Laptop Pro 14,Electronics,TechCore,1200,50
+102,Smartphone X,Electronics,MobiTech,850,120
+103,Tablet Air,Electronics,TechCore,700,90
+104,4K Monitor,Electronics,ViewSharp,400,60
+105,Wireless Headphones,Accessories,SoundMax,150,200
+106,Noise Cancelling Earbuds,Accessories,SoundMax,180,110
+107,Mechanical Keyboard,Accessories,KeyPro,130,150
+108,Wireless Mouse,Accessories,ClickFast,60,300
+109,Office Chair Deluxe,Furniture,ComfortSeat,320,75
+110,Standing Desk,Furniture,WorkEase,650,40
+111,Desk Lamp,Accessories,BrightLite,45,180
+112,USB-C Hub,Accessories,Connectix,70,140
+113,External SSD 1TB,Electronics,StoreFast,220,95
+114,Webcam HD,Electronics,ClearView,95,130
+115,Printer All-in-One,Electronics,PrintPro,280,55
+116,Backpack Pro,Accessories,CarryMax,90,160
+117,Smartwatch Fit,Electronics,MobiTech,250,85
+118,Bluetooth Speaker,Accessories,SoundMax,140,120
+119,Ergonomic Footrest,Furniture,ComfortSeat,75,100
+120,Power Strip Surge,Accessories,SafeVolt,40,220

@@ -1,0 +1,26 @@
+customer_id,customer_name,gender,age,country,region,signup_date
+1,John Smith,Male,34,USA,North America,2/14/2023
+2,Aisha Khan,Female,28,UK,Europe,03/01/2023
+3,Michael Brown,Male,45,Canada,North America,11/20/2022
+4,Priya Patel,Female,31,India,Asia,01/10/2023
+5,David Johnson,Male,39,Australia,Oceania,12/05/2022
+6,Fatima Ali,Female,26,UAE,Middle East,4/18/2023
+7,Chen Wei,Male,41,China,Asia,09/09/2022
+8,Maria Garcia,Female,36,Spain,Europe,5/22/2023
+9,Luis Fernandez,Male,29,Mexico,North America,06/03/2023
+10,Sarah Thompson,Female,33,USA,North America,7/15/2023
+11,Omar Hassan,Male,38,Egypt,Africa,10/27/2022
+12,Emily Wilson,Female,24,Canada,North America,08/01/2023
+13,Rahul Mehta,Male,35,India,Asia,2/25/2023
+14,Sophia Müller,Female,42,Germany,Europe,08/12/2022
+15,Noah Kim,Male,27,South Korea,Asia,09/05/2023
+16,Ana Silva,Female,31,Brazil,South America,1/18/2023
+17,James Anderson,Male,46,USA,North America,7/30/2022
+18,Zainab Bello,Female,29,Nigeria,Africa,04/02/2023
+19,Tomáš Novák,Male,37,Czech Republic,Europe,11/08/2022
+20,Elena Petrova,Female,34,Russia,Europe,12/19/2022
+21,Hiro Tanaka,Male,40,Japan,Asia,6/14/2022
+22,Isabella Rossi,Female,26,Italy,Europe,05/09/2023
+23,Ahmed Mansour,Male,32,Saudi Arabia,Middle East,3/27/2023
+24,Grace Mwangi,Female,35,Kenya,Africa,9/21/2022
+25,Carlos Mendez,Male,43,Chile,South America,10/11/2022
