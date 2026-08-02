@@ -1,41 +1,87 @@
-# Retail Sales Dashboard (Excel)
+# Retail Sales Dashboard — Excel & Power Query
 
-## Project Overview
+An interactive sales performance dashboard built entirely in Excel, covering 500 orders
+across four regions, four sales reps, and two product categories. The workbook combines
+a normalized data model, Power Query transformations, and PivotTable/PivotChart reporting
+with slicers for interactive filtering.
 
-This project is an interactive Retail Sales Dashboard built in Microsoft Excel to analyse sales performance across products, regions, and time periods. It provides business insights that support data-driven decision-making using interactive charts and PivotTables.
+![Dashboard overview](screenshots/sales_dashboard.png)
 
-## Business Problem
+## Business Questions
 
-Retail businesses need an easy way to monitor sales performance, identify top-performing products, analyse regional sales, and track monthly trends. This dashboard provides a single view of key performance indicators to help managers make informed decisions.
+- What is our total net sales, order volume, and average order value, and how does each compare year over year?
+- Which region and which sales reps are driving the most (and least) revenue?
+- Which products sell best, and how does discounting vary by order size?
+- How is sales volume trending month to month?
+
+## Data Model
+
+Rather than one flat spreadsheet, the workbook is structured as a small star schema:
+
+| Table | Role | Rows |
+|---|---|---|
+| `Retail_Sales_Data` | Fact table — one row per order | 500 |
+| `Customer` | Dimension — name, region, country | 20 |
+| `Product` | Dimension — category, unit price, manufacturer | 20 |
+| `SalesRep` | Dimension — region, experience level | 15 |
+
+The three dimension tables are merged into the fact table via Power Query, so every order
+carries its customer's country/region, the product's category and price, and the assigned
+rep's region and experience level — without repeating that lookup logic in every formula.
+
+## Data Cleaning & Calculated Fields
+
+- **Missing quantity handling:** 39 of 500 orders (7.8%) had a missing `Quantity` value.
+  Rather than defaulting these to zero or silently dropping them, each is flagged
+  `Quantity Flag = "Missing Quantity"` and excluded from sales calculations, so they're
+  visible for follow-up rather than hidden in the numbers.
+- **Order Category tiers:** each order is bucketed into `Low` / `Medium` / `High` based on
+  order value, used to slice the dashboard by order size.
+- **Net Sales:** calculated as `Total Sales − Discount` per line, not just gross revenue.
+- **Order Status:** every order is tagged `Completed`, `Pending`, or `Cancelled` — of the
+  500 orders, 306 completed, 157 pending, and 37 cancelled.
+
+## Dashboard Features
+
+- **KPI cards:** Total Net Sales, Total Orders, Average Order Value, Total Discount Given —
+  each with a year-over-year comparison indicator.
+- **Trend chart:** monthly sales trend across the full order history.
+- **Regional breakdown:** net sales and discount amount by region (bar and horizontal bar charts).
+- **Sales rep performance:** average order value by rep.
+- **Product performance:** top 5 selling products by net sales.
+- **Category breakdown:** order category and quantity sold, split by product category.
+- **Interactive filtering:** slicers for product category, order category (Low/Medium/High),
+  sales rep, and order date (with a 2024/2025 year toggle).
 
 ## Tools Used
 
-- Microsoft Excel
-- Power Query
-- PivotTables
-- Pivot Charts
-- Slicers
-- Conditional Formatting
+Excel · Power Query (data merging & transformation) · PivotTables & PivotCharts ·
+Slicers · calculated fields
 
-## Key Features
+## Known Limitations / Next Steps
 
-- Interactive dashboard with slicers
-- Monthly sales trend analysis
-- Regional sales comparison
-- Top-selling products
-- Sales by category
-- KPI summary
+- **2024 vs. 2025 order volume genuinely declined — this isn't a partial-year artifact.**
+  2025 data runs January 1 through December 5, essentially the full year, yet order volume
+  fell from 366 orders (2024) to 134 (2025). Since both years cover a comparable window, the
+  YoY indicators on the dashboard reflect a real drop in activity, not incomplete data — this
+  is worth calling out as the headline finding rather than a caveat, and investigating further
+  (e.g. which regions or reps saw the steepest decline) would be a natural next step.
+- **Order status isn't visualized.** Pending orders make up 31% of the dataset (157 of 500) —
+  large enough that a status breakdown chart would likely be a useful addition.
+- **The 39 missing-quantity orders aren't surfaced anywhere on the dashboard** — a small
+  "data quality" callout (e.g. "39 orders excluded due to missing quantity data") would make
+  the cleaning work visible to a reader rather than invisible.
 
-## Key Insights
+## Files
 
-- Identified the highest-performing sales region.
-- Highlighted the best-selling products.
-- Showed monthly sales trends to identify peak sales periods.
-- Enabled quick filtering by region and product category.
+```
+├── Excel_Project2_1.xlsx      # Full workbook: data model, Power Query, dashboard
+├── screenshots/
+│   └── sales_dashboard.png    # Dashboard preview
+└── README.md
+```
 
-## Dashboard Screenshot
 
-![Dashboard](screenshots/dashboard.png)
 
 ## Author
 
