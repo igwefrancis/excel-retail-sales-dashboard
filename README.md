@@ -58,19 +58,6 @@ rep's region and experience level — without repeating that lookup logic in eve
 Excel · Power Query (data merging & transformation) · PivotTables & PivotCharts ·
 Slicers · calculated fields
 
-## Known Limitations / Next Steps
-
-- **2024 vs. 2025 order volume genuinely declined — this isn't a partial-year artifact.**
-  2025 data runs January 1 through December 5, essentially the full year, yet order volume
-  fell from 366 orders (2024) to 134 (2025). Since both years cover a comparable window, the
-  YoY indicators on the dashboard reflect a real drop in activity, not incomplete data — this
-  is worth calling out as the headline finding rather than a caveat, and investigating further
-  (e.g. which regions or reps saw the steepest decline) would be a natural next step.
-- **Order status isn't visualized.** Pending orders make up 31% of the dataset (157 of 500) —
-  large enough that a status breakdown chart would likely be a useful addition.
-- **The 39 missing-quantity orders aren't surfaced anywhere on the dashboard** — a small
-  "data quality" callout (e.g. "39 orders excluded due to missing quantity data") would make
-  the cleaning work visible to a reader rather than invisible.
 
 ## Files
 
