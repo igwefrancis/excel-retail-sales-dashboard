@@ -58,18 +58,12 @@ rep's region and experience level — without repeating that lookup logic in eve
 Excel · Power Query (data merging & transformation) · PivotTables & PivotCharts ·
 Slicers · calculated fields
 
-
 ## Files
 
 ```
-├── Excel_Project2_1.xlsx      # Full workbook: data model, Power Query, dashboard
+├── retail-sales-dashboard.xlsx  # Full workbook: data model, Power Query, dashboard
 ├── screenshots/
 │   └── sales_dashboard.png    # Dashboard preview
 └── README.md
 ```
 
-
-
-## Author
-
-Francis Nchedo
