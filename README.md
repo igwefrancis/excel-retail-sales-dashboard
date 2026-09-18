@@ -1,69 +1,102 @@
-# Retail Sales Dashboard — Excel & Power Query
-
-An interactive sales performance dashboard built entirely in Excel, covering 500 orders
-across four regions, four sales reps, and two product categories. The workbook combines
-a normalized data model, Power Query transformations, and PivotTable/PivotChart reporting
-with slicers for interactive filtering.
-
-![Dashboard overview](screenshots/sales_dashboard.png)
-
-## Business Questions
-
-- What is our total net sales, order volume, and average order value, and how does each compare year over year?
-- Which region and which sales reps are driving the most (and least) revenue?
-- Which products sell best, and how does discounting vary by order size?
-- How is sales volume trending month to month?
-
-## Data Model
-
-Rather than one flat spreadsheet, the workbook is structured as a small star schema:
-
-| Table | Role | Rows |
-|---|---|---|
-| `Retail_Sales_Data` | Fact table — one row per order | 500 |
-| `Customer` | Dimension — name, region, country | 20 |
-| `Product` | Dimension — category, unit price, manufacturer | 20 |
-| `SalesRep` | Dimension — region, experience level | 15 |
-
-The three dimension tables are merged into the fact table via Power Query, so every order
-carries its customer's country/region, the product's category and price, and the assigned
-rep's region and experience level — without repeating that lookup logic in every formula.
-
-## Data Cleaning & Calculated Fields
-
-- **Missing quantity handling:** 39 of 500 orders (7.8%) had a missing `Quantity` value.
-  Rather than defaulting these to zero or silently dropping them, each is flagged
-  `Quantity Flag = "Missing Quantity"` and excluded from sales calculations, so they're
-  visible for follow-up rather than hidden in the numbers.
-- **Order Category tiers:** each order is bucketed into `Low` / `Medium` / `High` based on
-  order value, used to slice the dashboard by order size.
-- **Net Sales:** calculated as `Total Sales − Discount` per line, not just gross revenue.
-- **Order Status:** every order is tagged `Completed`, `Pending`, or `Cancelled` — of the
-  500 orders, 306 completed, 157 pending, and 37 cancelled.
-
-## Dashboard Features
-
-- **KPI cards:** Total Net Sales, Total Orders, Average Order Value, Total Discount Given —
-  each with a year-over-year comparison indicator.
-- **Trend chart:** monthly sales trend across the full order history.
-- **Regional breakdown:** net sales and discount amount by region (bar and horizontal bar charts).
-- **Sales rep performance:** average order value by rep.
-- **Product performance:** top 5 selling products by net sales.
-- **Category breakdown:** order category and quantity sold, split by product category.
-- **Interactive filtering:** slicers for product category, order category (Low/Medium/High),
-  sales rep, and order date (with a 2024/2025 year toggle).
-
-## Tools Used
-
-Excel · Power Query (data merging & transformation) · PivotTables & PivotCharts ·
-Slicers · calculated fields
-
-## Files
-
-```
-├── retail-sales-dashboard.xlsx  # Full workbook: data model, Power Query, dashboard
-├── screenshots/
-│   └── sales_dashboard.png    # Dashboard preview
-└── README.md
-```
-
+📊 Sales Performance Analysis & Strategic Insights — USA Market
+Table of Contents
+Project Overview
+Dashboard Preview
+Problem Statement
+Data Cleaning & Preparation
+Exploratory Data Analysis
+Key Findings & Strategic Recommendations
+Tools & Techniques
+---
+📌 Project Overview
+This project presents a Sales Performance Dashboard analyzing sales, profitability, customer orders, product performance, regional trends, discounts, and sales representative performance across the USA market.
+The project transforms raw sales data into actionable business insights to identify growth opportunities, improve sales performance, and support data-driven strategic decisions.
+---
+🖼 Dashboard Preview
+![Sales Performance Overview Dashboard](screenshots/01-dashboard-overview.png)
+Interactive Excel dashboard with slicers for Category, Order Category, Sales Rep, and Order Date, showing Net Sales, Orders, AOV, and Discount KPIs alongside regional and product breakdowns.
+---
+🎯 Problem Statement
+The analysis was designed to:
+Identify top-performing regions and products.
+Evaluate sales representative performance using Average Order Value (AOV).
+Assess the effectiveness of discount strategies.
+Identify performance gaps and growth opportunities.
+Provide data-driven recommendations to improve revenue and profitability.
+---
+🖌 Data Cleaning & Preparation
+Issues Identified
+Missing values in key fields, such as Quantity.
+Inconsistent date formats and incorrect data types.
+Text inconsistencies causing duplicate entries, particularly in Product Names.
+Steps Taken
+Used Power Query to merge tables and enrich the dataset.
+Cleaned text using Trim, Clean, and Proper formatting.
+Converted columns to the correct data types, including Date and Number.
+Handled missing values appropriately, including replacing missing values with `0` where required.
+Created key analytical columns such as:
+Net Sales
+Order Categories
+![Cleaned raw data — customer and product fields](screenshots/03-cleaned-raw-data-1.png)
+![Cleaned raw data — calculated fields (Net Sales, Discount, Order Category)](screenshots/04-cleaned-raw-data-2.png)
+---
+🔍 Exploratory Data Analysis (EDA)
+Key Business Questions Explored
+Which regions are driving the highest sales and profitability, and where are performance gaps occurring?
+Which products and product categories contribute the most to overall revenue and profit?
+Which sales representatives are performing above or below expectations, and what patterns explain the differences?
+How does Average Order Value (AOV) vary across regions, products and sales representatives?
+Are discounts contributing to higher sales, or are they reducing profitability without generating sufficient returns?
+How are sales and profit changing over time, and which periods show significant growth or decline?
+Which areas of the business present the strongest opportunities for improving revenue, profitability and sales performance?
+![PivotTable summary — Region, Sales Rep, and Product breakdowns](screenshots/02-pivot-summary-tables.png)
+![Analysis tab — KPIs, sales trend, and AOV by sales rep](screenshots/05-analysis-kpis-trends.png)
+---
+📈 Key Findings & Strategic Recommendations
+1. 🏆 High-Performing Region
+Finding
+The South Region is the primary revenue driver, generating the highest Net Sales of $95.8K. This indicates strong customer demand and effective sales execution in the region.
+Recommendation
+Allocate more marketing budget to the South through digital advertising and promotions.
+Increase inventory levels to reduce the risk of stockouts.
+Study successful sales practices in the South for possible application to other regions.
+2. 💻 Top Product to Promote
+Finding
+Laptops generate the highest sales at $174.6K, significantly outperforming other products.
+Recommendation
+Prioritize Laptops in major marketing campaigns.
+Maintain high inventory availability, particularly in the South Region.
+Use Laptops as a lead product to attract customers and encourage additional purchases.
+3. 📦 Low-Performing Products — Lift Strategy
+Finding
+Products such as Mouse, Keyboard and Monitor generate comparatively lower sales.
+Recommendation
+Bundle lower-performing products with high-performing products.
+Create packages such as Laptop + Mouse or complete Laptop + Desk Setup deals.
+Use targeted discounts selectively to increase demand for slow-moving products.
+4. 👥 Sales Representative Coaching Opportunity
+Finding
+There is a clear variation in Average Order Value (AOV) across sales representatives. Liam Jones is the top performer with an AOV of approximately $1.1K, while other representatives range between approximately $684 and $368.
+Recommendation
+Analyze Liam Jones' sales approach, customer profile, and strongest-performing region.
+Use his approach as a benchmark for sales team training.
+Encourage the sales team to focus not only on the number of orders but also on increasing Average Order Value.
+5. 💰 Discount Policy Review
+Finding
+The East Region has the highest discount amount at approximately $5.9K, yet it is not the top-performing region in sales. Approximately 6% of East Region sales is given as discounts, suggesting that the current discount strategy may be reducing margins without generating proportional revenue growth.
+Recommendation
+Shift toward targeted and performance-based discounts.
+Apply discounts strategically to slow-moving products rather than across-the-board.
+Avoid unnecessary heavy discounting in strong-performing regions such as the South, where customer demand is already strong.
+Monitor revenue generated per dollar of discount to measure discount effectiveness.
+---
+💡 Overall Business Takeaway
+The analysis shows that regional performance, product mix, sales representative effectiveness and discount strategy have a significant impact on sales performance.
+The business can improve revenue and profitability by investing more in high-performing regions and products, replicating successful sales practices, improving cross-selling and applying discounts more strategically.
+---
+🛠 Tools & Techniques
+Microsoft Excel — Data inspection and Visualization
+Power Query — Data cleaning, transformation and table merging
+PivotTables — Summarization and KPI calculation
+Slicers — Interactive filtering (Category, Order Category, Sales Rep, Order Date)
+DAX-style Measures / Calculated Fields — Net Sales, AOV, YoY%
